@@ -15,8 +15,8 @@ import math
 import numpy
 
 ## List NOC users from opsgenie
-noc_manager = <name>
-genie_token = <api-teken>
+noc_manager = <>
+genie_token = <>
 
 url = "https://api.eu.opsgenie.com/v2/users/?query=skypeUsername=NOC"
 
@@ -94,9 +94,9 @@ for x in range(total_count):
 
 dates = list(itertools.chain.from_iterable(itertools.repeat(timestamp.date(), 3) for timestamp in rng))
 
-paired_dates = pairwise(take(num_days_in_month*3, dates))
-paired_times = pairwise(take(num_days_in_month*3, times))
-paired_rotations = single(take(num_days_in_month*3, rotations))
+paired_dates = pairwise(take((num_days_in_month*3)+1, dates))
+paired_times = pairwise(take((num_days_in_month*3)+1, times))
+paired_rotations = single(take((num_days_in_month*3)+1, rotations))
 
 
 df = pd.DataFrame([[day, start_date, end_date, start_time, end_time, rotation_name, rotation_id, name, user, empty_one] for (start_date, end_date), (start_time, end_time), (rotation_name) in zip(paired_dates, paired_times, paired_rotations)],
@@ -175,3 +175,4 @@ while i < num_for_rotation:
 ## Write to Excel file
 
 df.to_excel(file_loc, index = False)
+
