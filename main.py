@@ -9,9 +9,22 @@ from pytz import timezone
 import datetime
 import pytz
 
-loc = '<Excel-Path>'
-schedule_id = '<Schedule-id>'
-genie_token = '<Token>'
+## Check what is the current date
+
+now = datetime.datetime.now()
+current_year = now.year
+current_month = now.month
+next_month = current_month + 1
+
+## Check what is the next month
+
+month_num_str = str(next_month)
+datetime_object = datetime.datetime.strptime(month_num_str, "%m")
+full_month_name = datetime_object.strftime("%B")
+
+loc = <>
+schedule_id = <>
+genie_token = <>
 
 def prefix_time(x):
     x = list(x)
